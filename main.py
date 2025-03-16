@@ -11,6 +11,7 @@ asteroids = pygame.sprite.Group()
 Player.containers = (updatable, drawable,) # adds the player to relavent groups
 Asteroid.containers = (asteroids, updatable, drawable,) # adds asteroids to relavant groups
 AsteroidField.containers = (updatable,)
+Shot.containers = (updatable, drawable)
 
 def main():
     print("Starting Asteroids!")
@@ -22,7 +23,8 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT)) # sets the parameters and creates the screen object
     clock = pygame.time.Clock() #creates the clock object
     player_1 = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2) # creates the player object in the center of the screen
-    asteroidfield = AsteroidField() # creates teh asteroid field objects
+    asteroidfield = AsteroidField() # creates the asteroid field objects
+    
 
     while True: # main game loop
         screen.fill((0,0,0)) # sets background to black
