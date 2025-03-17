@@ -7,11 +7,12 @@ from circleshape import *
 
 updatable = pygame.sprite.Group() # creates groups for things that need to update on screen each loop
 drawable = pygame.sprite.Group() # creates a group of things that need to be drawn on screen each loop
-asteroids = pygame.sprite.Group()
+asteroids = pygame.sprite.Group() #stores all asteroid objects
+shots = pygame.sprite.Group() # stores all shot objects
 Player.containers = (updatable, drawable,) # adds the player to relavent groups
 Asteroid.containers = (asteroids, updatable, drawable,) # adds asteroids to relavant groups
 AsteroidField.containers = (updatable,)
-Shot.containers = (updatable, drawable)
+Shot.containers = (updatable, drawable, shots)
 
 def main():
     print("Starting Asteroids!")
@@ -32,10 +33,22 @@ def main():
         updatable.update(dt) # upddates everything in the updatable group like players, asteroids, etc. each loop
 
         for asteroid in asteroids:
-            if (player_1.collision(asteroid)) == True:
+            if (player_1.collision(asteroid)) == True:  # checks for player and asteroid collisions
                 print ("Game Over!")
                 import sys
                 sys.exit()
+
+        
+        
+        for shot in shots:
+            for asteroid in asteroids:
+                if (shot.collision(asteroid)) == True:
+                    pygame.sprite.Sprite.kill(shot)
+                    pygame.sprite.Sprite.kill(asteroid)
+                
+                    
+                    
+                
 
         for entity in drawable: # draws everything in the drawable group to screen each loop
             entity.draw(screen)
