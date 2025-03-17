@@ -44,7 +44,7 @@ def main():
             for asteroid in asteroids:
                 if (shot.collision(asteroid)) == True:
                     pygame.sprite.Sprite.kill(shot)
-                    pygame.sprite.Sprite.kill(asteroid)
+                    asteroid.split()
                 
                     
                     
