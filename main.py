@@ -5,6 +5,8 @@ from asteroid import *
 from asteroidfield import *
 from circleshape import *
 
+# adam smells
+
 updatable = pygame.sprite.Group() # creates groups for things that need to update on screen each loop
 drawable = pygame.sprite.Group() # creates a group of things that need to be drawn on screen each loop
 asteroids = pygame.sprite.Group() #stores all asteroid objects
